@@ -34,33 +34,11 @@ restService.post("/webhook", function(req, res) {
     req.body.queryResult.parameters.hn
       ? req.body.queryResult.parameters.hn
       : "try again";
-  var msg = {
-  "messages": {
-   	"type": "template",
-        "altText": "this is a buttons template",
-        "template": {
-          "type": "buttons",
-          "actions": [
-            {
-              "type": "message",
-              "label": "ใช่",
-              "text": "btn_yes"
-            },
-            {
-              "type": "message",
-              "label": "ไม่ใช่",
-              "text": "btn_no"
-            }
-          ],
-          "title": "ตรวจสอบสิทธิ",
-          "text": "HN"
-	}
-  }
-}
+  
   return res.json({
     payload: temp,
     data: temp,
-    fulfillmentText: msg,
+    fulfillmentText: speech,
     speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
