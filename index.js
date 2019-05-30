@@ -35,7 +35,7 @@ restService.post("/webhook", function(req, res) {
       ? req.body.queryResult.parameters.hn
       : "try again";
   var msg = {
-  "line": {
+  "messages": {
    	"type": "template",
         "altText": "this is a buttons template",
         "template": {
