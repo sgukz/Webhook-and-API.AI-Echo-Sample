@@ -28,12 +28,7 @@ restService.post("/webhook", function(req, res) {
       }
     }
   };
-  var speech =
-    req.body.queryResult &&
-    req.body.queryResult.parameters &&
-    req.body.queryResult.parameters.echoText
-      ? req.body.queryResult.parameters.echoText
-      : "Seems like some problem. Speak again.";
+  var speech = req.body.queryResult
   return res.json({
     payload: temp,
     data: temp,
@@ -45,15 +40,7 @@ restService.post("/webhook", function(req, res) {
 });
 
 
-restService.post("/video", function(req, res) {
-  return res.json({
-    speech:
-      '<speak>  <audio src="https://www.youtube.com/watch?v=VX7SSnvpj-8">did not get your MP3 audio file</audio></speak>',
-    displayText:
-      '<speak>  <audio src="https://www.youtube.com/watch?v=VX7SSnvpj-8">did not get your MP3 audio file</audio></speak>',
-    source: "webhook-echo-sample"
-  });
-});
+
 
 
 restService.listen(process.env.PORT || 8000, function() {
