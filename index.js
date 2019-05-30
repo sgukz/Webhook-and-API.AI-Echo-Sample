@@ -35,8 +35,8 @@ restService.post("/webhook", function(req, res) {
       ? req.body.queryResult.parameters.hn
       : "try again";
   var msg = {
-      "line" : {
-        "type": "template",
+  "line": {
+   	"type": "template",
         "altText": "this is a buttons template",
         "template": {
           "type": "buttons",
@@ -53,10 +53,10 @@ restService.post("/webhook", function(req, res) {
             }
           ],
           "title": "ตรวจสอบสิทธิ",
-          "text": "HN "+ speech
-        }
-      }
+          "text": "HN"
+	}
   }
+}
   return res.json({
     payload: temp,
     data: temp,
