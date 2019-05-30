@@ -28,7 +28,7 @@ restService.post("/webhook", function(req, res) {
       }
     }
   };
-  var speech = req.body.queryResult
+  var speech = req.body.queryResult.parameter
   return res.json({
     payload: temp,
     data: temp,
