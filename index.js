@@ -13,7 +13,7 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
+restService.post("/webhook", function(req, res) {
   var temp = {
     google: {
       expectUserResponse: true,
