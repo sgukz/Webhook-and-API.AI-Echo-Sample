@@ -23,6 +23,14 @@ restService.post("/webhook", function(req, res) {
   
   return res.json({
     fulfillmentText: speech,
+    fulfillmentMessages: [
+      "line" {
+        {
+          "type": "text",
+          "text": "Hello Bot"
+        }
+      }
+    ],
     source: "webhook-echo-sample"
   });
 });
