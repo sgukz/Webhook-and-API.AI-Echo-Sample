@@ -26,8 +26,6 @@ restService.post("/webhook", function(req, res) {
   let payload = new Payload("LINE", payloadJson, {sendAsMessage:true});
   return res.json({
     payload: payload,
-    fulfillmentText: speech,
-    source: "webhook-echo-sample"
   });
 });
 
