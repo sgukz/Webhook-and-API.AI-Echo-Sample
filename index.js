@@ -18,19 +18,19 @@ restService.post("/webhook", function(req, res) {
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.hn
-      ? req.body.queryResult.parameters.hn
+      ? req.body.queryResult
       : "try again";
   
   return res.json({
     fulfillmentText: speech,
-    fulfillmentMessages: [
+    /*fulfillmentMessages: [
       "line" {
         {
           "type": "text",
           "text": "Hello Bot"
         }
       }
-    ],
+    ],*/
     source: "webhook-echo-sample"
   });
 });
