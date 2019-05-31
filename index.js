@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
+const { Payload } = require('dialogflow-fulfillment');
 
 restService.use(
   bodyParser.urlencoded({
@@ -18,17 +19,14 @@ restService.post("/webhook", function(req, res) {
     req.body.queryResult.parameters.hn
       ? req.body.queryResult
       : "try again";
-  
+  let payloadJson = {
+    "type": "text",
+    "text": "Hello Bot"
+  }
+  let payload = new Payload("LINE", payloadJson, {sendAsMessage:true});
   return res.json({
+    payload: payload,
     fulfillmentText: speech,
-    /*fulfillmentMessages: [
-      "line" {
-        {
-          "type": "text",
-          "text": "Hello Bot"
-        }
-      }
-    ],*/
     source: "webhook-echo-sample"
   });
 });
