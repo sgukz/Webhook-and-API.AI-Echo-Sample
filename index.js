@@ -24,7 +24,7 @@ restService.post("/webhook", function (req, res) {
       ? JSON.stringify(req.body)
       : "try again.";
   return res.json({
-    payload: speech,
+    fulfillmentText: speech,
     source: "webhook-echo-sample"
   });
 });
