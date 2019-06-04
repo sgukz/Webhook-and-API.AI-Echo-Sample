@@ -22,7 +22,14 @@ restService.post("/webhook", function (req, res) {
       ? JSON.stringify(req.body)
       : "try again.";
   return res.json({
-    fulfillmentText: speech,
+    fulfillmentMessages: [{ 
+      "quickReplies": { 
+        "title": "รอสักครู่นะค่ะ ส่วนสูง 168 น้ำหนัก 60 จะอ้วนหรือผอมดีนะ?", 
+        "quickReplies": ["อ้วน", "หุ่นดี"] 
+      }, 
+      "platform": "LINE" 
+    }, 
+    { "text": { "text": [""] } }],
     source: "webhook-echo-sample"
   });
 });
