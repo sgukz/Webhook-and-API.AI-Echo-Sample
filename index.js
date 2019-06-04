@@ -21,7 +21,7 @@ restService.post("/webhook", function (req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.height &&
       req.body.queryResult.parameters.weight
-      ? JSON.stringify(req.body)
+      ? req.body.queryResult.parameters.weight
       : "try again.";
   return res.json({
     fulfillmentText: speech,
