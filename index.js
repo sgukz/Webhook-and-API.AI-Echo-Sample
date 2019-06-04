@@ -29,7 +29,7 @@ restService.post("/webhook", function (req, res) {
       }, 
       "platform": "LINE" 
     }, 
-    { "text": { "text": [""] } }],
+    { "text": { "text": ["5555555"] } }],
     source: "webhook-echo-sample"
   });
 });
