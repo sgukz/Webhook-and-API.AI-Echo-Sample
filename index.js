@@ -15,7 +15,6 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
-  const agent = new WebhookClient({ req, res });
   var speech =
     req.body.queryResult &&
       req.body.queryResult.parameters &&
