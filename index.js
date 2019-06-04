@@ -1,3 +1,4 @@
+
 'use strict';
 
 const functions = require('firebase-functions');
@@ -64,6 +65,5 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('REH Rights - custom - yes', rehRightsIndex);
-
   agent.handleRequest(intentMap);
 });
