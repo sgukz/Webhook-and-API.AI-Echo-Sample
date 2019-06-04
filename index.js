@@ -19,18 +19,16 @@ restService.post("/webhook", function (req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.height &&
       req.body.queryResult.parameters.weight
-      ? JSON.stringify(req.body)
+      ? "ส่วนสูง : "+req.body.queryResult.parameters.height +"\nน้ำหนัก: "+req.body.queryResult.parameters.weight
+      // ? JSON.stringify(req.body)
       : "try again.";
   return res.json({
     fulfillmentMessages: [{ 
-      "quickReplies": { 
-        "title": "รอสักครู่นะค่ะ ส่วนสูง 168 น้ำหนัก 60 จะอ้วนหรือผอมดีนะ?", 
-        "quickReplies": ["อ้วน", "หุ่นดี"] 
-      }, 
+      "type": "text",
+      "text": speech, 
       "platform": "LINE" 
-    }, 
-    { "text": { "text": ["5555555"] } }],
-    source: "webhook-echo-sample"
+    }],
+    source: "line"
   });
 });
 
