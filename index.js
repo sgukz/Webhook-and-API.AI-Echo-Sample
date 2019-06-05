@@ -19,49 +19,7 @@ restService.post("/webhook", function (req, res) {
   let bmi = (weight/ (height * height)).toFixed(2);
 
   return res.json({
-    fulfillmentMessage: [{
-      "type": "flex",
-      "altText": "ค่าดัชนีมวลกาย (BMI)",
-      "contents": {
-          "type": "bubble",
-          "styles": {
-              "header": {
-                  "backgroundColor": "#1e81e7"
-              }
-          },
-          "header": {
-              "type": "box",
-              "layout": "baseline",
-              "contents": [
-                  {
-                      "type": "text",
-                      "text": " ค่าดัชนีมวลกาย (BMI)",
-                      "weight": "bold",
-                      "size": "md",
-                      "gravity": "top",
-                      "color": "#FFFFFF",
-                      "flex": 0
-                  }
-              ]
-          },
-          "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                  {
-                      "type": "text",
-                      "text": bmi,
-                      "weight": "bold",
-                      "size": "xl"
-                  },
-                  {
-                      "type": "text",
-                      "text": "อ้วน"
-                  }
-              ]
-          }
-      }
-  }],
+    fulfillmentText: JSON.stringify(req.body),
     source: "line"
   });
 });
