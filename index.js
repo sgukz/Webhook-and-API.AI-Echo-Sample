@@ -18,16 +18,22 @@ restService.post("/webhook", function (req, res) {
   let weight = req.body.queryResult.parameters.weight;
   let bmi = (weight / (height * height)).toFixed(2);
   let standard = "";
-  if(bmi < 18.50){
+  let color = "";
+  if (bmi < 18.50) {
     standard = "น้ำหนักน้อย / ผอม";
-  }else if(bmi >= 18.50 && bmi < 23){
+    color = "#f8c471";
+  } else if (bmi >= 18.50 && bmi < 23) {
     standard = "ปกติ (สุขภาพดี)";
-  }else if(bmi >= 23 && bmi < 25){
+    color = "#2ecc71";
+  } else if (bmi >= 23 && bmi < 25) {
     standard = "ท้วม / โรคอ้วนระดับ 1";
-  }else if(bmi >= 25 && bmi < 30){
+    color = "#ec7063";
+  } else if (bmi >= 25 && bmi < 30) {
     standard = "อ้วน / โรคอ้วนระดับ 2";
-  }else if(bmi >= 30){
+    color = "#e74c3c";
+  } else if (bmi >= 30) {
     standard = "อ้วนมาก / โรคอ้วนระดับ 3";
+    color = "#cb4335";
   }
   return res.json({
     //fulfillmentText: JSON.stringify(req.body),
@@ -64,13 +70,20 @@ restService.post("/webhook", function (req, res) {
               "contents": [
                 {
                   "type": "text",
+                  "text": "น้ำหนัก ",
+                  "weight": "bold",
+                  "size": "xs"
+                },
+                {
+                  "type": "text",
                   "text": bmi,
                   "weight": "bold",
                   "size": "xl"
                 },
                 {
                   "type": "text",
-                  "text": standard
+                  "text": standard,
+                  "color": color
                 }
               ]
             }
