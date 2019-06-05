@@ -35,6 +35,9 @@ restService.post("/webhook", function (req, res) {
   } else if (bmi >= 30) {
     standard = "อ้วนมาก / โรคอ้วนระดับ 3";
     color = "#cb4335";
+  }else if(bmi == 0.00){
+    standard = "ระบุข้อมูลไม่สมบูรณ์";
+    color = "#cb4335";
   }
   return res.json({
     //fulfillmentText: JSON.stringify(req.body),
