@@ -2,8 +2,10 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const axios = require('axios');
+//const request = require("request");
 
-const restService = express();
+const restService = express("");
 
 restService.use(
   bodyParser.urlencoded({
@@ -14,6 +16,15 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
+  const toTwoDigits = num => (num < 10 ? "0" + num : num);
+  let today = new Date();
+  let year = today.getFullYear();
+  let year_TH = parseInt(today.getFullYear()) + 543;
+  let month = toTwoDigits(today.getMonth() + 1);
+  let day = toTwoDigits(today.getDate());
+  let ToDay = today.getDate();
+  let date_now = `${year}-${month}-${day}`;
+  
   if (req.body.queryResult.parameters.height && req.body.queryResult.parameters.weight) {
     let height = req.body.queryResult.parameters.height / 100;
     let height1 = req.body.queryResult.parameters.height;
@@ -100,6 +111,18 @@ restService.post("/webhook", function (req, res) {
       source: "line"
     });
   } else {
+
+    // axios
+    // .post("http://192.168.99.181:9000/comcenter/getDuty", {
+    //   dateStart: date_now
+    // })
+    // .then(res => {
+    //   let result = ""
+    //   let data = res.data;
+    //   result = data[0].name;
+      
+    // })
+    // .catch(error => console.log("Error :", error));
     return res.json({
       //fulfillmentText: JSON.stringify(req.body),
       fulfillmentText: JSON.stringify(req.body),

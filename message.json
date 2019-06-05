@@ -121,5 +121,74 @@
             }
         },
         "platform": "LINE"
+    },
+    {
+        "responseId": "e0ac475c-191f-4820-9e82-72dbe7ee7ad3-64cfa233",
+        "queryResult": {
+            "queryText": "ใช่แล้ว",
+            "action": "REHRights.REHRights-custom.REHRights-custom-yes",
+            "parameters": {
+                "weight": 69,
+                "height": 178
+            },
+            "allRequiredParamsPresent": true,
+            "fulfillmentMessages": [
+                {
+                    "text": {
+                        "text": [
+                            ""
+                        ]
+                    }
+                }
+            ],
+            "outputContexts": [
+                {
+                    "name": "projects/line-bot-5a5ee/agent/sessions/dfccfd0a-0e48-426d-9201-33d6dc023fb9/contexts/rehrights-custom-followup",
+                    "lifespanCount": 1,
+                    "parameters": {
+                        "height": 178,
+                        "height.original": "178",
+                        "weight": 69,
+                        "weight.original": "69"
+                    }
+                },
+                {
+                    "name": "projects/line-bot-5a5ee/agent/sessions/dfccfd0a-0e48-426d-9201-33d6dc023fb9/contexts/rehrights-followup",
+                    "parameters": {
+                        "height": 178,
+                        "height.original": "178",
+                        "weight": 69,
+                        "weight.original": "69"
+                    }
+                }
+            ],
+            "intent": {
+                "name": "projects/line-bot-5a5ee/agent/intents/2d872b2c-d79c-4e95-ae17-594ccadea661",
+                "displayName": "REH Rights - custom - yes"
+            },
+            "intentDetectionConfidence": 1,
+            "languageCode": "th"
+        },
+        "originalDetectIntentRequest": {
+            "source": "line",
+            "payload": {
+                "data": {
+                    "message": {
+                        "type": "text",
+                        "text": "ใช่แล้ว",
+                        "id": "9987102911276"
+                    },
+                    "replyToken": "78248dea8e8e45e69f4928a7e47b2c42",
+                    "timestamp": 1559703615170,
+                    "type": "message",
+                    "source": {
+                        "userId": "U216f1919363344fffde28837a07e23a1",
+                        "type": "user"
+                    }
+                },
+                "source": "line"
+            }
+        },
+        "session": "projects/line-bot-5a5ee/agent/sessions/dfccfd0a-0e48-426d-9201-33d6dc023fb9"
     }
 ]
