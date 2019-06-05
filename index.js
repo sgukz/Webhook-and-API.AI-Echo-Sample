@@ -14,27 +14,56 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
-  var speech =
-    req.body.queryResult &&
-      req.body.queryResult.parameters &&
-      req.body.queryResult.parameters.height &&
-      req.body.queryResult.parameters.weight
-      //? "ส่วนสูง : "+req.body.queryResult.parameters.height +"\nน้ำหนัก: "+req.body.queryResult.parameters.weight
-      ? JSON.stringify(req.body)
-      : "try again.";
+  let height = req.body.queryResult.parameters.height/100;
+  let weight = req.body.queryResult.parameters.weight;
+  let bmi = (weight/ (height * height)).toFixed(2);
 
   return res.json({
-    fulfillmentText: speech,
+    fulfillmentMessage: [{
+      "type": "flex",
+      "altText": "ค่าดัชนีมวลกาย (BMI)",
+      "contents": {
+          "type": "bubble",
+          "styles": {
+              "header": {
+                  "backgroundColor": "#1e81e7"
+              }
+          },
+          "header": {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                  {
+                      "type": "text",
+                      "text": " ค่าดัชนีมวลกาย (BMI)",
+                      "weight": "bold",
+                      "size": "md",
+                      "gravity": "top",
+                      "color": "#FFFFFF",
+                      "flex": 0
+                  }
+              ]
+          },
+          "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                  {
+                      "type": "text",
+                      "text": bmi,
+                      "weight": "bold",
+                      "size": "xl"
+                  },
+                  {
+                      "type": "text",
+                      "text": "อ้วน"
+                  }
+              ]
+          }
+      }
+  }],
     source: "line"
   });
-  // return res.json({
-  //   fulfillmentMessages: [{ 
-  //     "type": "text",
-  //     "text": speech, 
-  //     "platform": "LINE" 
-  //   }],
-  //   source: "line"
-  // });
 });
 
 restService.listen(process.env.PORT || 8000, function () {

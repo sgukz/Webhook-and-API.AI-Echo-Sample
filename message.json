@@ -1,0 +1,77 @@
+[
+    {
+        "type": "flex",
+        "altText": "ช่วยเหลือ/สอบถาม",
+        "contents": {
+            "type": "bubble",
+            "styles": {
+                "header": {
+                    "backgroundColor": "#1e81e7"
+                }
+            },
+            "header": {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": " ต้องการความช่วยเหลือ",
+                        "weight": "bold",
+                        "size": "md",
+                        "gravity": "top",
+                        "color": "#FFFFFF",
+                        "flex": 0
+                    }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "ท่านต้องการให้เราช่วยเหลือในเรื่องใด",
+                        "weight": "bold",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "ขอบคุณครับ",
+                        "align": "center"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "type": "flex",
+        "altText": "ผลการลงทะเบียน",
+        "contents": {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "ลงทะเบียนเรียบร้อยแล้ว",
+                        "size": "xs",
+                        "weight": "bold",
+                        "color": "#17c950"
+                    }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "ขอบคุณครับ",
+                        "align": "center"
+                    }
+                ]
+            }
+        }
+    }
+]
