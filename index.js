@@ -15,6 +15,7 @@ restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
   let height = req.body.queryResult.parameters.height / 100;
+  let height1 = req.body.queryResult.parameters.height;
   let weight = req.body.queryResult.parameters.weight;
   let bmi = (weight / (height * height)).toFixed(2);
   let standard = "";
@@ -70,7 +71,7 @@ restService.post("/webhook", function (req, res) {
               "contents": [
                 {
                   "type": "text",
-                  "text": "น้ำหนัก ",
+                  "text": "น้ำหนัก "+ weight +" ส่วนสูง "+ height1,
                   "weight": "bold",
                   "size": "xs"
                 },
