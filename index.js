@@ -74,7 +74,7 @@ restService.post("/webhook", function (req, res) {
               "contents": [
                 {
                   "type": "text",
-                  "text": "น้ำหนัก "+ weight +" ส่วนสูง "+ height1,
+                  "text": "ส่วนสูง "+ height1 +" น้ำหนัก "+ weight,
                   "weight": "bold",
                   "size": "xs"
                 },
