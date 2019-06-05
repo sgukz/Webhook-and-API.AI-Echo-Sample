@@ -112,22 +112,22 @@ restService.post("/webhook", function (req, res) {
     });
   } else {
 
-    // axios
-    // .post("http://192.168.99.181:9000/comcenter/getDuty", {
-    //   dateStart: date_now
-    // })
-    // .then(res => {
-    //   let result = ""
-    //   let data = res.data;
-    //   result = data[0].name;
-      
-    // })
-    // .catch(error => console.log("Error :", error));
-    return res.json({
-      //fulfillmentText: JSON.stringify(req.body),
-      fulfillmentText: JSON.stringify(req.body),
-      source: "line"
-    });
+    axios
+    .post("http://192.168.99.181:9000/comcenter/getDuty", {
+      dateStart: date_now
+    })
+    .then(res => {
+      let result = ""
+      let data = res.data;
+      result = data[0].name;
+      return res.json({
+        fulfillmentText: result,
+        //fulfillmentText: JSON.stringify(req.body),
+        //fulfillmentText: JSON.stringify(req.body),
+        source: "line"
+      });
+    })
+    .catch(error => console.log("Error :", error));
   }
 });
 
