@@ -24,18 +24,7 @@ restService.post("/webhook", function (req, res) {
   let day = toTwoDigits(today.getDate());
   let ToDay = today.getDate();
   let date_now = `${year}-${month}-${day}`;
-  // axios
-  //   .post("http://192.168.99.181:9000/comcenter/getDuty", {
-  //     dateStart: date_now
-  //   })
-  //   .then(res => {
-  //     let result = ""
-  //     let data = res.data;
-  //     result = data[0].name;
-  //     return res.json(result);
-  //   })
-  //   .catch(error => console.log("Error :", error));
-    
+
   if (req.body.queryResult.parameters.height && req.body.queryResult.parameters.weight) {
     let height = req.body.queryResult.parameters.height / 100;
     let height1 = req.body.queryResult.parameters.height;
@@ -122,11 +111,21 @@ restService.post("/webhook", function (req, res) {
       source: "line"
     });
   } else {
-    return res.json({
-      //fulfillmentText: JSON.stringify(req.body),
-      fulfillmentText: JSON.stringify(req.body),
-      source: "line"
-    });
+    axios
+      .post("http://49.231.5.51:3000/getDuty", {
+        dateStart: date_now
+      })
+      .then(resp => {
+        let result = ""
+        let data = resp.data;
+        result = data.dataParse.name
+        return res.json({
+          //fulfillmentText: JSON.stringify(req.body),
+          fulfillmentText: result,
+          source: "line"
+        });
+      })
+      .catch(error => console.log("Error :", error));
   }
 });
 
