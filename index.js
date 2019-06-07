@@ -110,7 +110,7 @@ restService.post("/webhook", function (req, res) {
       }],
       source: "line"
     });
-  } else if(req.body.queryResult.parameters.duty == "เวรเที่ยง") {
+  } else if(req.body.queryResult.parameters.duty == "เวรเที่ยง" || req.body.queryResult.parameters.duty == "เวรเที่ยงใคร") {
     axios
       .post("http://49.231.5.51:3000/getDuty", {
         dateStart: date_now
