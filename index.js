@@ -120,8 +120,50 @@ restService.post("/webhook", function (req, res) {
         let data = resp.data;
         result = data.dataParse.name
         return res.json({
-          //fulfillmentText: JSON.stringify(req.body),
-          fulfillmentText: result,
+          fulfillmentMessages:[{
+            "payload": {
+              "line": {
+                "type": "flex",
+                "altText": "เวรเที่ยงศูนย์คอมฯ ",
+                "contents": {
+                  "type": "bubble",
+                  "styles": {
+                    "header": {
+                      "backgroundColor": "#28b463"
+                    }
+                  },
+                  "header": {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "เวรเที่ยงศูนย์คอมฯ",
+                        "weight": "bold",
+                        "size": "md",
+                        "gravity": "top",
+                        "color": "#FFFFFF",
+                        "flex": 0
+                      }
+                    ]
+                  },
+                  "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": result,
+                        "weight": "bold",
+                        "size": "xl"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "platform": "LINE"
+          }],
           source: "line"
         });
       })
